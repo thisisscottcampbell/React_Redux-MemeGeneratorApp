@@ -1,6 +1,6 @@
-import { RECEIVE_MEMES } from '../actions/types';
+import { RECEIVE_MEMES, NEW_MEME } from '../actions/types';
 
-const memesReducer = (state = [], action) => {
+export const apiMemesReducer = (state = [], action) => {
 	switch (action.type) {
 		case RECEIVE_MEMES:
 			return action.payload;
@@ -9,4 +9,11 @@ const memesReducer = (state = [], action) => {
 	}
 };
 
-export default memesReducer;
+export const myMemesReducer = (state = [], action) => {
+	switch (action.type) {
+		case NEW_MEME:
+			return [...state, action.meme];
+		default:
+			return state;
+	}
+};

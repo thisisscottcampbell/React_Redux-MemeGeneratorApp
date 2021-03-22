@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import memesReducer from './memesReducer';
+import { apiMemesReducer, myMemesReducer } from './memesReducer';
 
 const rootReducer = combineReducers({
-	memes: memesReducer,
+	memes: apiMemesReducer,
+	myMemes: myMemesReducer,
 });
 
 export default rootReducer;

@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
+import { newMeme } from '../actions';
+import { connect } from 'react-redux';
 
-const MemeCard = ({ meme }) => {
+const MemeCard = ({ meme, topText, bottomText }) => {
 	const [isHover, setHover] = useState(false);
+
+	const handleClick = () => {
+		console.log(topText, bottomText);
+	};
 	return (
 		<div
 			className="meme-card"
 			onMouseOver={() => setHover(!isHover)}
 			onMouseOut={() => setHover(!isHover)}
+			onClick={handleClick}
 		>
 			<img
 				className={isHover ? 'meme-img darken-img' : 'meme-img'}
@@ -18,4 +25,4 @@ const MemeCard = ({ meme }) => {
 	);
 };
 
-export default MemeCard;
+export default connect(null, { newMeme })(MemeCard);
