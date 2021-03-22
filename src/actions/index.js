@@ -30,7 +30,6 @@ export const createMeme = (memeData) => async (dispatch) => {
 	});
 
 	console.log('response:', response.data);
-	//console.log(response.data);
 
 	dispatch({ type: NEW_MEME, payload: response });
 };
