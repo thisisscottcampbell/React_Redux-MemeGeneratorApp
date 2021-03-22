@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-	baseURL: 'https://api.imgflip.com/get_memes',
+	baseURL: 'https://api.imgflip.com',
 });
