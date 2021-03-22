@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MemeCard from './components/MemeCard';
+import MyMemes from './components/MyMemes';
 import useInput from './hooks/useInput';
 import { connect } from 'react-redux';
 
@@ -18,6 +19,7 @@ const App = ({ memes }) => {
 		));
 	return (
 		<div>
+			<MyMemes />
 			<h1>
 				<u>MemeGenerator!!!</u>
 			</h1>
@@ -61,6 +63,6 @@ const App = ({ memes }) => {
 };
 
 const mapStateToProps = (state) => {
-	return { memes: state.memes };
+	return { memes: state.memes, myMemes: state.myMemes };
 };
 export default connect(mapStateToProps, null)(App);

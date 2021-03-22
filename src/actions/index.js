@@ -9,18 +9,28 @@ export const fetchMemes = () => async (dispatch) => {
 };
 
 export const createMeme = (memeData) => async (dispatch) => {
-	const params = new URLSearchParams();
-	params.append('username', username);
-	params.append('password', password);
+	const { template_id, text0, text1 } = memeData;
+	const data = { template_id, text0, text1, username, password };
 
-	const response = await memeAPI.post(`/caption_image`, memeData, {
+	console.log(data);
+
+	const encodeData = Object.keys(data)
+		.map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+		.join('&');
+
+	console.log('encodeData', encodeData);
+
+	const response = await memeAPI.post(`/caption_image`, {
 		body: {
-			params,
+			encodeData,
 		},
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
 	});
+
+	console.log('response:', response.data);
+	//console.log(response.data);
 
 	dispatch({ type: NEW_MEME, payload: response });
 };

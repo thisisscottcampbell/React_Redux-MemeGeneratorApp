@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const MyMemes = ({ memes }) => {
-	console.log(memes);
+const MyMemes = ({ myMemes }) => {
+	//console.log(myMemes);
 
-	const memeList = memes.map((meme, i) => {
-		return (
-			<img key={i} src={meme.data.url} alt="my-meme" className="my-meme-img" />
-		);
+	if (!myMemes) return null;
+
+	const memeList = myMemes.map((meme, i) => {
+		return <img key={i} alt="" className="my-meme-img" />;
 	});
 	return <div>{memeList}</div>;
 };
 
 const mapStateToProps = (state) => {
-	return { memes: state.myMemes };
+	return { myMemes: state.myMemes };
 };
 
-export default MyMemes;
+export default connect(mapStateToProps, null)(MyMemes);
