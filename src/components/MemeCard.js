@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { newMeme } from '../actions';
+import { createMeme } from '../actions';
 import { connect } from 'react-redux';
 
-const MemeCard = ({ meme, topText, bottomText }) => {
+const MemeCard = ({ meme, topText, bottomText, createMeme }) => {
 	const [isHover, setHover] = useState(false);
 
+	//calls createMeme ac
 	const handleClick = () => {
-		console.log(topText, bottomText);
+		const memeData = {
+			text0: topText,
+			text1: bottomText,
+			template_id: meme.id,
+		};
+
+		createMeme(memeData);
 	};
+
 	return (
 		<div
 			className="meme-card"
@@ -25,4 +33,4 @@ const MemeCard = ({ meme, topText, bottomText }) => {
 	);
 };
 
-export default connect(null, { newMeme })(MemeCard);
+export default connect(null, { createMeme })(MemeCard);

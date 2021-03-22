@@ -10,6 +10,7 @@ export const apiMemesReducer = (state = [], action) => {
 };
 
 export const myMemesReducer = (state = [], action) => {
+	console.log(action);
 	switch (action.type) {
 		case NEW_MEME:
 			return [...state, action.meme];
